@@ -4,7 +4,10 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="messageService" class="com.example.MyNameMessageService"></bean>
+    <!-- <bean id="messageService" class="com.example.RandomTextMessageService" scope="prototype" ></bean>
+    <bean id="randomMessageService" class="com.example.RandomTextMessageService" scope="prototype" ></bean> -->
 
-    <!--<context:component-scan base-package="com.example" />-->
+     <context:component-scan base-package="com.example" />
 </beans>
+
+<!--  scope="prototype" - Prototyp zakresu oznacza, że ​​za każdym razem, gdy zapytasz spring (getBean lub dependency injection) o instancję, utworzy on nową instancję i poda do niej odniesienie. -->
