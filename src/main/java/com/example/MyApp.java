@@ -1,16 +1,20 @@
 package com.example;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 public class MyApp {
-
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(MyNameMessageService.class, RandomTextMessageService.class);
 
-        MessageService messageService = applicationContext.getBean("messageService", MessageService.class);
+        MessageService messageService = ctx.getBean("messageService", MessageService.class);
+        MessageService randomMessageService = ctx.getBean("randomMessageService", MessageService.class);
+
+        System.out.println("messageService - hashcode -> " + messageService.hashCode());
+        System.out.println("randomMessageService - hashcode -> " + randomMessageService.hashCode());
 
         System.out.println(messageService.getMessage());
-
-        applicationContext.close();
+        System.out.println(randomMessageService.getMessage());
     }
 }
